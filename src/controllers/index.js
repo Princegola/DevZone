@@ -1,0 +1,1 @@
+export { authRoute, postRoute, profileRoute, userRoute  } from './api/index.js';
