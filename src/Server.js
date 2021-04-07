@@ -1,17 +1,18 @@
 import express from "express";
-import bodyParser from "body-parser";
+// import bodyParser from "body-parser";
 import Database from "./libs/Database.js";
 import routes from './router.js';
+// import configuration from './config/configuration.js'
 
 class Server {
   app;
-  constructor(config) {
+  constructor(configuration) {
     this.app = express();
   }
 
   bootstrap() {
-    this.initBodyParser();
-    this.setUpRoutes();
+      this.initBodyParser();
+      this.setUpRoutes();
     return this;
   }
 
@@ -23,12 +24,12 @@ class Server {
   }
 
   initBodyParser() {
-    this.app.use(bodyParser.json());
+    this.app.use(express.json({ extended: false }));
   }
 
   run() {
     const { app } = this;
-    const PORT = 3000;
+    const PORT = 5000;
     const mongoURI =
       "mongodb+srv://Prince123:Prince123@devzone.ujr3h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     Database.open(mongoURI)
@@ -46,8 +47,6 @@ class Server {
           console.log(err);
         }
       });
-    // Connect DB from config/db.js
-    // connectDB();
   }
 }
 

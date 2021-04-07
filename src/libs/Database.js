@@ -4,7 +4,12 @@ export default class Database {
     static open (mongoURL) {
         return new Promise((resolve, reject) => {
             console.log('Inside open method');
-            mongoose.connect(mongoURL, { useNewUrlParser: true,useUnifiedTopology: true }, (err) => {
+            mongoose.connect(mongoURL, { 
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                useCreateIndex: true,
+                useFindAndModify: false,
+             }, (err) => {
                 if(err) {
                     console.log(err);
                     reject (err);
