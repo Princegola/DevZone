@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 // import bodyParser from "body-parser";
 import Database from "./libs/Database.js";
 import routes from './router.js';
@@ -17,6 +18,7 @@ class Server {
   }
 
   setUpRoutes() {
+    this.app.use(cors());
     this.app.use("/health-check", (req, res) => {
       res.send("I am Ok");
     });

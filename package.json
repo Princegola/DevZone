@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "npm run server",
-    "server": "nodemon ./src/index.js"
+    "server": "nodemon ./src/index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",

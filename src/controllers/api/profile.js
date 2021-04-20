@@ -4,6 +4,7 @@ import configuration from '../../config/configuration.js';
 import authMiddleWare from "../../libs/routes/authMiddleWare.js";
 import Profile from "../../models/ProfileModel.js";
 import User from "../../models/UserModel.js";
+import Post from '../../models/PostModel.js'
 const profileRoute = express.Router();
 const { check, validationResult } = expressValidator;
 const { request } = express;
@@ -152,7 +153,7 @@ profileRoute.get("/user/:user_id", async (req, res) => {
 
 profileRoute.delete('/', authMiddleWare, async (req, res) => {
     try {
-        // Post.deleteMany({ user: req.user.id }),
+        await Post.deleteMany({ user: req.user.id }),
         await Profile.findOneAndRemove({ user: req.user.id }),
         await User.findOneAndRemove({ _id: req.user.id })
   
