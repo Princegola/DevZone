@@ -1,5 +1,6 @@
 import express from "express";
 import cors from 'cors';
+import path from 'path';
 // import bodyParser from "body-parser";
 import Database from "./libs/Database.js";
 import routes from './router.js';
